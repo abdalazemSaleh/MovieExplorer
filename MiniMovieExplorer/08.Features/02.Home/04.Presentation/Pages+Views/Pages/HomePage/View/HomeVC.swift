@@ -67,8 +67,23 @@ extension HomeVC: CollectionViewProtocols {
         }
         return cell
     }
-    
+  
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        viewModel.loadMoreIfNeeded(currentItem: indexPath.item)
+    }
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        /// Pagination
+//        let visibleRect = CGRect(origin: scrollView.contentOffset, size: scrollView.bounds.size)
+//        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+//
+//        if let visibleIndexPath = popularMoviesCollectionView.indexPathForItem(at: visiblePoint) {
+//            print("Visible index: \(visibleIndexPath.item)")
+//            viewModel.loadMoreIfNeeded(currentItem: visibleIndexPath.item)
+//        } else {
+//            print("No visible index path for point: \(visiblePoint)")
+//        }
+
         /// Header animation
         let currentOffset = scrollView.contentOffset.y
         
@@ -102,12 +117,5 @@ extension HomeVC: CollectionViewProtocols {
         }
         
         lastContentOffset = currentOffset
-        
-        /// Pagination
-        let visibleRect = CGRect(origin: scrollView.contentOffset, size: scrollView.bounds.size)
-        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.maxY)
-        if let visibleIndexPath = popularMoviesCollectionView.indexPathForItem(at: visiblePoint) {
-            viewModel.loadMoreIfNeeded(currentItem: visibleIndexPath.item)
-        }
     }
 }

@@ -51,7 +51,6 @@ extension HomeViewModel {
     func loadMoreIfNeeded(currentItem: Int) {
         guard fetchPopularMoviesUseCase.canLoadMore(),
               currentItem >= movies.count - 5 else { return }
-        
         Task {
             await fetchPopularMovies()
         }

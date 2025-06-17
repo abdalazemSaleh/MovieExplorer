@@ -33,7 +33,7 @@ final class FetchPopularMoviesUseCase: BaseUseCase {
         /// update pagination data
         hasMorePages = remoteMovies.hasMorePages
         if hasMorePages {
-            currentPage = remoteMovies.currentPage
+            currentPage += 1
         }
         
         /// prepare movie items to return
