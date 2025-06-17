@@ -8,6 +8,9 @@ final class HomeVC: BaseVC {
     
     // MARK: - Properties
     private var viewModel: HomeViewModel
+    private var lastContentOffset: CGFloat = 0
+    private let searchFieldMaxHeight: CGFloat = 56
+    private let searchFieldMinHeight: CGFloat = 0
 
     // MARK: -  Init
     init(viewModel: HomeViewModel) {
@@ -63,5 +66,40 @@ extension HomeVC: CollectionViewProtocols {
             self?.viewModel.favoriteButtonTapped(movieViewItem.movie, isFavorite: isFavorite)
         }
         return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentOffset = scrollView.contentOffset.y
+        
+        if currentOffset <= 0 {
+            UIView.animate(withDuration: 0.2) {
+                self.headerView.searchTextFieldHeight.constant = self.searchFieldMaxHeight
+                self.view.layoutIfNeeded()
+            }
+            lastContentOffset = 0
+            return
+        }
+        
+        let differenceFromStart = currentOffset - lastContentOffset
+        let isScrollingDown = differenceFromStart > 0
+        let isScrollingUp = differenceFromStart < 0
+        
+        let currentHeight = headerView.searchTextFieldHeight.constant
+        
+        var newHeight: CGFloat
+        if isScrollingDown {
+            newHeight = max(searchFieldMinHeight, currentHeight - abs(differenceFromStart))
+        } else if isScrollingUp {
+            newHeight = min(searchFieldMaxHeight, currentHeight + abs(differenceFromStart))
+        } else {
+            return
+        }
+        
+        UIView.animate(withDuration: 0.2) {
+            self.headerView.searchTextFieldHeight.constant = newHeight
+            self.view.layoutIfNeeded()
+        }
+        
+        lastContentOffset = currentOffset
     }
 }

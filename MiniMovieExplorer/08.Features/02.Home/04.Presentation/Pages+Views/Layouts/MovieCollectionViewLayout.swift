@@ -22,7 +22,7 @@ final class MovieCollectionViewLayout: UICollectionViewFlowLayout {
         scrollDirection = .vertical
         minimumLineSpacing = spacing
         minimumInteritemSpacing = spacing
-        sectionInset = UIEdgeInsets(top: 0, left: padding, bottom: 0, right: padding)
+        sectionInset = UIEdgeInsets(top: 152, left: padding, bottom: 32, right: padding)
     }
     
     // MARK: - Layout
