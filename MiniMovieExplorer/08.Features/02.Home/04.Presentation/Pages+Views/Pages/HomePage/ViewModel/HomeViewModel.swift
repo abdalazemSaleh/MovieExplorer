@@ -15,8 +15,14 @@ final class HomeViewModel: BaseViewModel {
     
     // MARK: - Published Properties
     @Published private(set) var movies: [MovieViewItem] = []
+    @Published private(set) var filteredMovies: [MovieViewItem] = []
     @Published private(set) var isLoading = false
     @Published private(set) var error: Error?
+    @Published var searchText: String = "" {
+        didSet {
+            filterMovies()
+        }
+    }
     
     // MARK: - Init
     init(fetchPopularMoviesUseCase: FetchPopularMoviesUseCase,
@@ -32,6 +38,7 @@ extension HomeViewModel: HomeViewModelProtocol {
         do {
             let newMovies = try await fetchPopularMoviesUseCase.execute(request: ())
             movies.append(contentsOf: newMovies)
+            filterMovies()
         } catch {
             print("Error is", error.localizedDescription)
         }
@@ -50,7 +57,7 @@ extension HomeViewModel: HomeViewModelProtocol {
 extension HomeViewModel {
     func loadMoreIfNeeded(currentItem: Int) {
         guard fetchPopularMoviesUseCase.canLoadMore(),
-              currentItem >= movies.count - 5 else { return }
+              currentItem >= filteredMovies.count - 5 else { return }
         Task {
             await fetchPopularMovies()
         }
@@ -59,6 +66,7 @@ extension HomeViewModel {
     func resetPagination() {
         fetchPopularMoviesUseCase.reset()
         movies.removeAll()
+        filteredMovies.removeAll()
     }
 }
 
@@ -77,6 +85,20 @@ private extension HomeViewModel {
             try favoriteMovieRepository.removeFromFavorites(movie)
         } catch {
             print("Error managing favorites:", error.localizedDescription)
+        }
+    }
+    
+    #warning("Important bug")
+    #warning("While fillter he see the last cells which lead to load nex page from remote data source, I only need to fillter the local data")
+    #warning("Disable load next page if search text is not empty")
+    func filterMovies() {
+        if searchText.isEmpty {
+            filteredMovies = movies
+        } else {
+            filteredMovies = movies.filter { movie in
+                movie.movie.title.localizedCaseInsensitiveContains(searchText) ||
+                movie.movie.overview.localizedCaseInsensitiveContains(searchText)
+            }
         }
     }
 }

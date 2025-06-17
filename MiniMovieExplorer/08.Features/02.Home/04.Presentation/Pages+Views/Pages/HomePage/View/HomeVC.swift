@@ -25,14 +25,19 @@ final class HomeVC: BaseVC {
     // MARK: - Setup View
     override func setupView() {
         configureCollectionViews()
+        configureSearchBar()
         Task {
             await viewModel.fetchPopularMovies()
         }
-        viewModel.$movies
+        setupBindings()
+    }
+    
+    private func setupBindings() {
+        viewModel.$filteredMovies
             .sink { [weak self] _ in
-            self?.popularMoviesCollectionView.reloadData()
-        }
-        .store(in: &subscription)
+                self?.popularMoviesCollectionView.reloadData()
+            }
+            .store(in: &subscription)
     }
 }
 
@@ -51,40 +56,32 @@ private extension HomeVC {
             collectionView.collectionViewLayout = MovieCollectionViewLayout()
         }
     }
+    
+    func configureSearchBar() {
+        headerView.searchTextField.delegate = self
+    }
 }
 
 // MARK: - Collection View Delegate And Data Source
 extension HomeVC: CollectionViewProtocols {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  viewModel.movies.count
+        return viewModel.filteredMovies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(with: MovieCollectionViewCell.self, for: indexPath)
-        let movieViewItem = viewModel.movies[indexPath.row]
+        let movieViewItem = viewModel.filteredMovies[indexPath.row]
         cell.configure(with: movieViewItem) { [weak self] isFavorite in
             self?.viewModel.favoriteButtonTapped(movieViewItem.movie, isFavorite: isFavorite)
         }
         return cell
     }
-  
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         viewModel.loadMoreIfNeeded(currentItem: indexPath.item)
     }
-
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        /// Pagination
-//        let visibleRect = CGRect(origin: scrollView.contentOffset, size: scrollView.bounds.size)
-//        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
-//
-//        if let visibleIndexPath = popularMoviesCollectionView.indexPathForItem(at: visiblePoint) {
-//            print("Visible index: \(visibleIndexPath.item)")
-//            viewModel.loadMoreIfNeeded(currentItem: visibleIndexPath.item)
-//        } else {
-//            print("No visible index path for point: \(visiblePoint)")
-//        }
-
-        /// Header animation
         let currentOffset = scrollView.contentOffset.y
         
         if currentOffset <= 0 {
@@ -117,5 +114,22 @@ extension HomeVC: CollectionViewProtocols {
         }
         
         lastContentOffset = currentOffset
+    }
+}
+
+// MARK: - UISearchBarDelegate
+extension HomeVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.searchText = searchText
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        viewModel.searchText = ""
+        searchBar.resignFirstResponder()
     }
 }

@@ -52,35 +52,3 @@ final class FetchPopularMoviesUseCase: BaseUseCase {
         return !isLoading && hasMorePages
     }
 }
-
-//final class GetPopularMoviesUseCase {
-//
-//    // MARK: - Public Methods
-//    func execute() async throws -> [Movie] {
-//        guard !isLoading && hasMorePages else { return [] }
-//        
-//        isLoading = true
-//        defer { isLoading = false }
-//        
-//        let movies = try await repository.getPopularMovies(page: currentPage)
-//        
-//        // Update pagination state
-//        hasMorePages = movies.count == pageSize
-//        if hasMorePages {
-//            currentPage += 1
-//        }
-//        
-//        return movies
-//    }
-//    
-//}
-
-//        let remoteMovies = try await movieRepository.fetchPopularMovies()
-//        let favoriteMovies = try favoritesRepository.getAllFavorites()
-//
-//        let favoriteIDs = Set(favoriteMovies.map { $0.id })
-//
-//        return remoteMovies.map { movie in
-//            MovieViewItem(movie: movie, isFavorite: favoriteIDs.contains(movie.id))
-//        }
-
