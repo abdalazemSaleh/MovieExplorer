@@ -1,5 +1,5 @@
 {
-  "originHash" : "765060e01aa2e71385bff1540a6a48ff3317c630008401e6f8345465c2fd2ea2",
+  "originHash" : "1174395db643e1b55f8b609f8785ddf8bd7630c702b5cd435c04639001a43059",
   "pins" : [
     {
       "identity" : "combinenetworklayerpackage",
@@ -17,15 +17,6 @@
       "state" : {
         "revision" : "04f2fd18cc9404a0a0917265a449002674f24ec9",
         "version" : "4.5.2"
-      }
-    },
-    {
-      "identity" : "resolver",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/hmlongco/Resolver.git",
-      "state" : {
-        "revision" : "47602af1ac8d7952299fbd0bda3cfbd12cf3a8ca",
-        "version" : "1.5.1"
       }
     }
   ],

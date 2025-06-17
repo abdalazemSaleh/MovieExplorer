@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		898D56822E0060C700631111 /* NetworkLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 898D56812E0060C700631111 /* NetworkLayer */; };
 		898D57FD2E00648A00631111 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 898D57FC2E00648A00631111 /* Lottie */; };
-		898D58B12E006B6700631111 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 898D58B02E006B6700631111 /* Resolver */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +41,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				898D58B12E006B6700631111 /* Resolver in Frameworks */,
 				898D57FD2E00648A00631111 /* Lottie in Frameworks */,
 				898D56822E0060C700631111 /* NetworkLayer in Frameworks */,
 			);
@@ -89,7 +87,6 @@
 			packageProductDependencies = (
 				898D56812E0060C700631111 /* NetworkLayer */,
 				898D57FC2E00648A00631111 /* Lottie */,
-				898D58B02E006B6700631111 /* Resolver */,
 			);
 			productName = MiniMovieExplorer;
 			productReference = 898D51312E005F6200631111 /* MiniMovieExplorer.app */;
@@ -123,7 +120,6 @@
 			packageReferences = (
 				898D56802E0060C700631111 /* XCRemoteSwiftPackageReference "CombineNetworkLayerPackage" */,
 				898D57FB2E00648A00631111 /* XCRemoteSwiftPackageReference "lottie-spm" */,
-				898D58AF2E006B6700631111 /* XCRemoteSwiftPackageReference "Resolver" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 898D51322E005F6200631111 /* Products */;
@@ -381,14 +377,6 @@
 				minimumVersion = 4.5.2;
 			};
 		};
-		898D58AF2E006B6700631111 /* XCRemoteSwiftPackageReference "Resolver" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hmlongco/Resolver.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -401,11 +389,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 898D57FB2E00648A00631111 /* XCRemoteSwiftPackageReference "lottie-spm" */;
 			productName = Lottie;
-		};
-		898D58B02E006B6700631111 /* Resolver */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 898D58AF2E006B6700631111 /* XCRemoteSwiftPackageReference "Resolver" */;
-			productName = Resolver;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
