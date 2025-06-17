@@ -60,7 +60,7 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <searchBar contentMode="redraw" searchBarStyle="minimal" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5H-6A-oIK">
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search series, films...." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5H-6A-oIK">
                                         <rect key="frame" x="0.0" y="76" width="397" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="WVH-BO-vlO"/>
