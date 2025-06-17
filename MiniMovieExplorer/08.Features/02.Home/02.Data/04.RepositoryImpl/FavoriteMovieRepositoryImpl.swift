@@ -18,7 +18,7 @@ final class FavoriteMovieRepositoryImpl: FavoriteMovieRepository {
     }
     
     func isFavorite(_ movie: Movie) -> Bool {
-        try dataSource.isFavorite(movie)
+        dataSource.isFavorite(movie)
     }
     
     func getAllFavorites() throws -> [Movie] {

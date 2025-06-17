@@ -7,8 +7,8 @@ final class MovieRepositoryImpl: MovieRepository {
         self.dataSource = dataSource
     }
     
-    func fetchPopularMovies() async throws -> [Movie] {
-        let response = try await dataSource.fetchMovies()
+    func fetchPopularMovies(page: Int) async throws -> MovieResponse {
+        let response = try await dataSource.fetchMovies(page: page)
         return MovieMapper.map(response)
     }
     

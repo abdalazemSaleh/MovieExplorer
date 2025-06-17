@@ -1,8 +1,9 @@
 import NetworkLayer
+import Foundation
 
 // MARK: - Cases
 enum MoviesEndPoint: EndPoint, AuthorizedEndpoint {
-    case fetchPopularMovies
+    case fetchPopularMovies(page: Int)
     case fetchMovieDetails(id: Int)
 }
 
@@ -26,6 +27,17 @@ extension MoviesEndPoint {
 extension MoviesEndPoint {
     var method: HTTPMethod {
         .get
+    }
+}
+
+// MARK: - Params
+extension MoviesEndPoint {
+    var parameters: [URLQueryItem] {
+        switch self {
+        case .fetchPopularMovies(let page):
+            return [.init(name: "page", value: String(page))]
+        default: return []
+        }
     }
 }
 

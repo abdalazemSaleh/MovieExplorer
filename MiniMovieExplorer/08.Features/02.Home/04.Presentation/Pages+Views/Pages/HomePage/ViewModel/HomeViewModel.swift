@@ -30,23 +30,15 @@ final class HomeViewModel: BaseViewModel {
 extension HomeViewModel: HomeViewModelProtocol {
     func fetchPopularMovies() async {
         do {
-            let result = try await fetchPopularMoviesUseCase.execute(request: ())
-            movies = result
+            let newMovies = try await fetchPopularMoviesUseCase.execute(request: ())
+            movies.append(contentsOf: newMovies)
         } catch {
             print("Error is", error.localizedDescription)
         }
     }
     
     func favoriteButtonTapped(_ movie: Movie, isFavorite: Bool) {
-        do {
-            if isFavorite {
-                try favoriteMovieRepository.addToFavorites(movie)
-            } else {
-                try favoriteMovieRepository.removeFromFavorites(movie)
-            }
-        } catch {
-            print("Error managing favorites:", error.localizedDescription)
-        }
+        isFavorite ? addToFavorite(movie) : removeFromFavorite(movie)
     }
     
     func isFavorite(_ movie: Movie) -> Bool {
@@ -54,13 +46,38 @@ extension HomeViewModel: HomeViewModelProtocol {
     }
 }
 
+// MARK: - Pagination Functions
+extension HomeViewModel {
+    func loadMoreIfNeeded(currentItem: Int) {
+        guard fetchPopularMoviesUseCase.canLoadMore(),
+              currentItem >= movies.count - 5 else { return }
+        
+        Task {
+            await fetchPopularMovies()
+        }
+    }
+    
+    func resetPagination() {
+        fetchPopularMoviesUseCase.reset()
+        movies.removeAll()
+    }
+}
+
 // MARK: - Private Methods
 private extension HomeViewModel {
     func addToFavorite(_ movie: Movie) {
-        print("Add to favorite")
+        do {
+            try favoriteMovieRepository.addToFavorites(movie)
+        } catch {
+            print("Error managing favorites:", error.localizedDescription)
+        }
     }
     
     func removeFromFavorite(_ movie: Movie) {
-        print("Remove from favorite")
+        do {
+            try favoriteMovieRepository.removeFromFavorites(movie)
+        } catch {
+            print("Error managing favorites:", error.localizedDescription)
+        }
     }
 }

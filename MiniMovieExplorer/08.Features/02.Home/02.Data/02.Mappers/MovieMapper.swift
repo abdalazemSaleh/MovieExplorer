@@ -1,7 +1,14 @@
 import Foundation
 
-#warning("Mapp this to a separate file")
 enum MovieMapper {
+    static func map( _ entity: PaginationBaseModel<MovieEntity>) -> MovieResponse {
+        return MovieResponse(
+            currentPage: entity.page,
+            hasMorePages: entity.page < entity.totalPages,
+            movies: entity.results.map { Self.map($0) }
+        )
+    }
+    
     static func map(_ entity: MovieEntity) -> Movie {
         return Movie(
             id: entity.id ?? .defaultValue,

@@ -69,6 +69,7 @@ extension HomeVC: CollectionViewProtocols {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        /// Header animation
         let currentOffset = scrollView.contentOffset.y
         
         if currentOffset <= 0 {
@@ -101,5 +102,12 @@ extension HomeVC: CollectionViewProtocols {
         }
         
         lastContentOffset = currentOffset
+        
+        /// Pagination
+        let visibleRect = CGRect(origin: scrollView.contentOffset, size: scrollView.bounds.size)
+        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.maxY)
+        if let visibleIndexPath = popularMoviesCollectionView.indexPathForItem(at: visiblePoint) {
+            viewModel.loadMoreIfNeeded(currentItem: visibleIndexPath.item)
+        }
     }
 }
