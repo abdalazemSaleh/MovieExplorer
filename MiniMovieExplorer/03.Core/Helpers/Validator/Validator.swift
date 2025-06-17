@@ -1,10 +1,3 @@
-//
-//  Validator.swift
-//  eTrip
-//
-//  Created by Abdalazem Saleh on 18/11/2024.
-//
-
 import Foundation
 
 enum ValidatorTypes: Int {

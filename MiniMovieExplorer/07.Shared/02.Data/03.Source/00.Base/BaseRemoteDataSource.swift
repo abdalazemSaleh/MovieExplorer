@@ -1,13 +1,7 @@
-//
-//  BaseRemoteDataSource.swift
-//  MiniMovieExplorer
-//
-//  Created by Abdel Azim Saleh on 16/06/2025.
-//
-
 import Foundation
 import NetworkLayer
 
+#warning("Error handling base on message if exists")
 class BaseRemoteDataSource {
     let network = APIRequestHandler()
     

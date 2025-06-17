@@ -1,10 +1,3 @@
-//
-//  Environment.swift
-//  eTrip
-//
-//  Created by Abdalazem Saleh on 25/11/2024.
-//
-
 import Foundation
 
 public enum Environment {

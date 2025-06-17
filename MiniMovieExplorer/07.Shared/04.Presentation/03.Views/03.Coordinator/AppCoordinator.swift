@@ -1,10 +1,3 @@
-//
-//  AppCoordinator.swift
-//  eTrip
-//
-//  Created by Abdalazem Saleh on 07/10/2024.
-//
-
 import UIKit
 
 class AppCoordinator {
@@ -12,11 +5,12 @@ class AppCoordinator {
     var windo: UIWindow?
     var isLogin = false
     
-    @Injected var router: Router
+    var router: Router
     
     static let shared = AppCoordinator()
     
     init() {
+        router = AppRouter(navigationController: .init())
         router.navigationController.isNavigationBarHidden = true
     }
 }
@@ -52,7 +46,7 @@ extension AppCoordinator: Coordinator {
         UIView.transition(with: window, duration: 1, options: .transitionFlipFromRight) {
             self.resetWindo()
         }
-        let coordinator = HomeCoordinator()
+        let coordinator = HomeCoordinator(router: router)
         coordinator.start()
     }
 }

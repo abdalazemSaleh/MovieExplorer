@@ -1,10 +1,3 @@
-//
-//  UILabel+Strike.swift
-//  eTrip
-//
-//  Created by Abdalazem Saleh on 04/12/2024.
-//
-
 import UIKit
 
 extension UILabel {

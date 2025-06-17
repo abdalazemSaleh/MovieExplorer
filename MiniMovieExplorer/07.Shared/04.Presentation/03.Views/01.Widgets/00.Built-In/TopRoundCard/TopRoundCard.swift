@@ -1,10 +1,3 @@
-//
-//  TopRoundCard.swift
-//  AseerAlkotb
-//
-//  Created by Abdalazem Saleh on 06/02/2025.
-//
-
 import UIKit
 
 class TopRoundCard: UIView {

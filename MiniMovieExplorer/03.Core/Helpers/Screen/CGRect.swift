@@ -1,10 +1,3 @@
-//
-//  CGRect.swift
-//  eTrip
-//
-//  Created by Abdalazem Saleh on 28/11/2024.
-//
-
 import UIKit
 
 extension CGSize {

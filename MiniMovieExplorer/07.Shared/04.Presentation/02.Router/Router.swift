@@ -1,10 +1,3 @@
-//
-//  Router.swift
-//  eTrip
-//
-//  Created by Abdalazem Saleh on 07/10/2024.
-//
-
 import UIKit
 
 protocol Router {

@@ -1,10 +1,3 @@
-//
-//  CustomTableView.swift
-//  AseerAlkotb
-//
-//  Created by Abdalazem Saleh on 10/02/2025.
-//
-
 import UIKit
 
 class CustomTableView: UITableView {

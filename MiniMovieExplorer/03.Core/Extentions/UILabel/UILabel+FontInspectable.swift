@@ -1,11 +1,3 @@
-//
-//  user.swift
-//  KHALED
-//
-//  Created by khaled mohammed on 7/12/17.
-//  Copyright © 2017 khaled mohammed. All rights reserved.
-//
-
 import UIKit
 
 extension UILabel {

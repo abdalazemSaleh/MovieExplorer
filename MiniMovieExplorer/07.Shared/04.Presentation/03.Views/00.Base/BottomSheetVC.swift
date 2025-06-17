@@ -1,10 +1,3 @@
-//
-//  BottomSheetVC.swift
-//  eTrip
-//
-//  Created by Abdalazem Saleh on 14/11/2024.
-//
-
 import UIKit
 
 class BottomSheetVC: UIViewController {

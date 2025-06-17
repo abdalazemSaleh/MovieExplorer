@@ -1,10 +1,3 @@
-//
-//  TokenManager.swift
-//  MiniMovieExplorer
-//
-//  Created by Abdel Azim Saleh on 17/06/2025.
-//
-
 import Foundation
 
 enum TokenError: Error {

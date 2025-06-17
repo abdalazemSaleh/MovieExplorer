@@ -1,11 +1,3 @@
-//
-//  DefaultValueProviding.swift
-//  MiniMovieExplorer
-//
-//  Created by Abdel Azim Saleh on 16/06/2025.
-//
-
-
 import Combine
 import NetworkLayer
 import CoreLocation

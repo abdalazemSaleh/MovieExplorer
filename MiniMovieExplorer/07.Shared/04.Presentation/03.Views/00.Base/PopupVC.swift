@@ -1,10 +1,3 @@
-//
-//  PopupVC.swift
-//  AseerAlkotb
-//
-//  Created by Abdalazem Saleh on 11/02/2025.
-//
-
 import UIKit
 
 class PopupVC: UIViewController {

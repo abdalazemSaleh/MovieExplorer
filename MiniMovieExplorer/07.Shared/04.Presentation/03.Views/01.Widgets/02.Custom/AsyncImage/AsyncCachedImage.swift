@@ -1,10 +1,3 @@
-//
-//  AsyncCachedImage.swift
-//  eTrip
-//
-//  Created by Abdalazem Saleh on 09/12/2024.
-//
-
 import UIKit
 
 class AsyncCachedImageView: UIImageView {

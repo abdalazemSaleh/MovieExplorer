@@ -1,10 +1,3 @@
-//
-//  UIView+Nib.swift
-//  eTrip
-//
-//  Created by Abdalazem Saleh on 12/11/2024.
-//
-
 import UIKit
 
 extension UIView {

@@ -1,10 +1,3 @@
-//
-//  HomeVC.swift
-//  MiniMovieExplorer
-//
-//  Created by Abdel Azim Saleh on 16/06/2025.
-//
-
 import UIKit
 
 final class HomeVC: BaseVC {

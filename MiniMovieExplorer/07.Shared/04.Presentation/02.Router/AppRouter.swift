@@ -1,14 +1,11 @@
-//
-//  AppRouter.swift
-//  eTrip
-//
-//  Created by Abdalazem Saleh on 07/10/2024.
-//
-
 import UIKit
 
 final class AppRouter {
-    @Injected var navigationController: UINavigationController
+    var navigationController: UINavigationController
+    
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
 }
 
 extension AppRouter: Router {

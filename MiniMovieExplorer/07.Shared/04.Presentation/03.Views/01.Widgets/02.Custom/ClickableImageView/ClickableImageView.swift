@@ -1,11 +1,3 @@
-//
-//  ClickableImageView.swift
-//  eTrip
-//
-//  Created by Abdalazem Saleh on 17/11/2024.
-//
-
-
 import UIKit
 
 class ClickableImageView: UIImageView {

@@ -1,10 +1,3 @@
-//
-//  InMemoreCache.swift
-//  eTrip
-//
-//  Created by Abdalazem Saleh on 25/11/2024.
-//
-
 import Foundation
 
 actor InMemoryCache<Key: Hashable, Value> {

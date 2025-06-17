@@ -1,11 +1,3 @@
-//
-//  PaginationBaseModel.swift
-//  MiniMovieExplorer
-//
-//  Created by Abdel Azim Saleh on 17/06/2025.
-//
-
-
 struct PaginationBaseModel<T: Codable>: Codable {
     let page: Int
     let results: [T]

@@ -1,10 +1,3 @@
-//
-//  MovieDetailsEntity.swift
-//  MiniMovieExplorer
-//
-//  Created by Abdel Azim Saleh on 17/06/2025.
-//
-
 struct MovieDetailsEntity: MovieSummaryProtocol {
     /// base movie data
     var id: Int?

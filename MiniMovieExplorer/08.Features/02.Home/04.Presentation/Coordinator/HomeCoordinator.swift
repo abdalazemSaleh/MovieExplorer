@@ -1,10 +1,3 @@
-//
-//  HomeCoordinator.swift
-//  MiniMovieExplorer
-//
-//  Created by Abdel Azim Saleh on 16/06/2025.
-//
-
 protocol HomeCoordinatorProtocol: Coordinator {
     func showHomePage()
     func showMovieDetailsPage(movieId: Int)
@@ -13,11 +6,11 @@ protocol HomeCoordinatorProtocol: Coordinator {
 
 final class HomeCoordinator: HomeCoordinatorProtocol {
     
-    @Injected var router: any Router
+    var router: Router
     let movieConainer: MovieDependencyContainer
     
-    init() {
-        //        self.router = router
+    init(router: Router) {
+        self.router = router
         self.movieConainer = MovieDependencyContainer()
     }
     

@@ -1,10 +1,3 @@
-//
-//  SelfSizeTableView.swift
-//  eTrip
-//
-//  Created by Abdalazem Saleh on 01/12/2024.
-//
-
 import UIKit
 
 final class ResizableTableView: UITableView {
