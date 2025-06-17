@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="MiniMovieExplorer" customModuleProvider="target">
+            <connections>
+                <outlet property="popularMoviesCollectionView" destination="luP-to-kGv" id="STT-if-Pr6"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l9T-ew-ih7">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="120"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="Ahg-dt-reI"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="luP-to-kGv">
+                    <rect key="frame" x="0.0" y="120" width="393" height="664"/>
+                    <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="brX-aW-1dj">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="luP-to-kGv" firstAttribute="top" secondItem="l9T-ew-ih7" secondAttribute="bottom" id="4MW-kW-zKd"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="luP-to-kGv" secondAttribute="bottom" id="8S9-d8-oH9"/>
+                <constraint firstItem="luP-to-kGv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="A1x-h8-ha1"/>
+                <constraint firstItem="l9T-ew-ih7" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="FNP-eH-igk"/>
+                <constraint firstItem="l9T-ew-ih7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="SkL-UT-rVC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="luP-to-kGv" secondAttribute="trailing" id="a6v-KE-8ns"/>
+                <constraint firstItem="l9T-ew-ih7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gSv-ai-yfg"/>
+            </constraints>
+            <point key="canvasLocation" x="-22.137404580152669" y="-11.267605633802818"/>
+        </view>
+    </objects>
+</document>

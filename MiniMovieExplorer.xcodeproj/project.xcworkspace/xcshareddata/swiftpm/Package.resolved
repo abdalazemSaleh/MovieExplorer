@@ -1,0 +1,33 @@
+{
+  "originHash" : "765060e01aa2e71385bff1540a6a48ff3317c630008401e6f8345465c2fd2ea2",
+  "pins" : [
+    {
+      "identity" : "combinenetworklayerpackage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/abdalazemSaleh/CombineNetworkLayerPackage",
+      "state" : {
+        "revision" : "ad7fad33516f1b788be5a48493557be4e8599f7f",
+        "version" : "2.0.5"
+      }
+    },
+    {
+      "identity" : "lottie-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/lottie-spm.git",
+      "state" : {
+        "revision" : "04f2fd18cc9404a0a0917265a449002674f24ec9",
+        "version" : "4.5.2"
+      }
+    },
+    {
+      "identity" : "resolver",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hmlongco/Resolver.git",
+      "state" : {
+        "revision" : "47602af1ac8d7952299fbd0bda3cfbd12cf3a8ca",
+        "version" : "1.5.1"
+      }
+    }
+  ],
+  "version" : 3
+}

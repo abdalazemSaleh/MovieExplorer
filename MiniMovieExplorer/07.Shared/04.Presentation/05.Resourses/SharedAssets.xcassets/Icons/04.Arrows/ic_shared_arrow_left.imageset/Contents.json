@@ -1,0 +1,20 @@
+{
+  "images" : [
+    {
+      "filename" : "arrow-left.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "filename" : "sdas.pdf",
+      "idiom" : "universal",
+      "locale" : "ar"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "localizable" : true
+  }
+}
