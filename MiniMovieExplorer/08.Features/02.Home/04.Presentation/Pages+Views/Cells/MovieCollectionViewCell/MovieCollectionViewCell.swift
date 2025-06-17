@@ -1,10 +1,3 @@
-//
-//  MovieCollectionViewCell.swift
-//  MiniMovieExplorer
-//
-//  Created by Abdel Azim Saleh on 16/06/2025.
-//
-
 import UIKit
 
 class MovieCollectionViewCell: UICollectionViewCell {
@@ -12,9 +5,10 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var nameLable: UILabel!
     @IBOutlet weak var favButton: FavoriteButton!
     
-    func configure(with data: Movie, favoriteButtonAction: @escaping (Bool) -> Void) {
-        posterImageView.loadImage(from: data.posterURL)
-        nameLable.text = data.title
+    func configure(with data: MovieViewItem, favoriteButtonAction: @escaping (Bool) -> Void) {
+        posterImageView.loadImage(from: data.movie.posterURL)
+        nameLable.text = data.movie.title
+        favButton.isFavorited = data.isFavorite
         favButton.onToggle = { isFavorite in
             favoriteButtonAction(isFavorite)
         }

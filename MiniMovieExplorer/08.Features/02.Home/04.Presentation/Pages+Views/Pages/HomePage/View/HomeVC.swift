@@ -64,9 +64,9 @@ extension HomeVC: CollectionViewProtocols {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(with: MovieCollectionViewCell.self, for: indexPath)
-        let movie = viewModel.movies[indexPath.row]
-        cell.configure(with: movie) { [weak self] isFavorite in
-            self?.viewModel.favoriteButtonTapped(movie, isFavorite: isFavorite)
+        let movieViewItem = viewModel.movies[indexPath.row]
+        cell.configure(with: movieViewItem) { [weak self] isFavorite in
+            self?.viewModel.favoriteButtonTapped(movieViewItem.movie, isFavorite: isFavorite)
         }
         return cell
     }

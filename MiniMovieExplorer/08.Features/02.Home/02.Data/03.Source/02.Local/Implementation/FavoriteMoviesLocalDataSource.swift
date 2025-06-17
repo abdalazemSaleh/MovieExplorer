@@ -2,22 +2,23 @@ import Foundation
 import SwiftData
 
 final class FavoriteMoviesLocalDataSource: FavoriteMoviesDataSource {
-    private var modelContext: ModelContext?
+    var container: ModelContainer?
+    var modelContext: ModelContext?
     
     init() {
-        Task { @MainActor in
-            do {
-                let container = try ModelContainer(for: FavoriteMovie.self)
-                self.modelContext = container.mainContext
-            } catch {
-                fatalError("Failed to create ModelContainer: \(error)")
+        do {
+            container = try ModelContainer(for: FavoriteMovie.self)
+            if let container {
+                modelContext = ModelContext(container)
             }
+        } catch {
+            print("Error initializing database container:", error)
         }
     }
-
+    
     func addToFavorites(_ movie: Movie) throws {
         guard let modelContext else {
-            fatalError("Model context is nil")
+            throw NSError(domain: "FavoriteMoviesLocalDataSource", code: -1, userInfo: [NSLocalizedDescriptionKey: "Model context is not initialized"])
         }
         
         let favoriteMovie = FavoriteMovie(from: movie)
@@ -27,7 +28,7 @@ final class FavoriteMoviesLocalDataSource: FavoriteMoviesDataSource {
     
     func removeFromFavorites(_ movie: Movie) throws {
         guard let modelContext else {
-            fatalError("Model context is nil")
+            throw NSError(domain: "FavoriteMoviesLocalDataSource", code: -1, userInfo: [NSLocalizedDescriptionKey: "Model context is not initialized"])
         }
         
         let descriptor = FetchDescriptor<FavoriteMovie>(
@@ -41,16 +42,14 @@ final class FavoriteMoviesLocalDataSource: FavoriteMoviesDataSource {
     }
     
     func isFavorite(_ movie: Movie) -> Bool {
-        guard let modelContext else {
-            fatalError("Model context is nil")
-        }
+        guard let modelContext else { return false }
         
         let descriptor = FetchDescriptor<FavoriteMovie>(
             predicate: #Predicate { $0.id == movie.id }
         )
         
         do {
-            return try !(modelContext.fetch(descriptor).isEmpty )
+            return try !modelContext.fetch(descriptor).isEmpty
         } catch {
             return false
         }
@@ -58,9 +57,9 @@ final class FavoriteMoviesLocalDataSource: FavoriteMoviesDataSource {
     
     func getAllFavorites() throws -> [Movie] {
         guard let modelContext else {
-            fatalError("Model context is nil")
+            throw NSError(domain: "FavoriteMoviesLocalDataSource", code: -1, userInfo: [NSLocalizedDescriptionKey: "Model context is not initialized"])
         }
-
+        
         let descriptor = FetchDescriptor<FavoriteMovie>(
             sortBy: [SortDescriptor(\.dateAdded, order: .reverse)]
         )

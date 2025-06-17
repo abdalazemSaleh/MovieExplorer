@@ -23,7 +23,10 @@ final class MovieDependencyContainer {
     
     // MARK: - Use Cases
     func makeFetchPopularMoviesUseCase() -> FetchPopularMoviesUseCase {
-        return FetchPopularMoviesUseCase(repository: makeMovieRepository())
+        return FetchPopularMoviesUseCase(
+            movieRepository: makeMovieRepository(),
+            favoritesRepository: makeFavoriteMovieRepository()
+        )
     }
     
     func makeFetchMovieDetailsUseCase() -> FetchMovieDetailsUseCase {

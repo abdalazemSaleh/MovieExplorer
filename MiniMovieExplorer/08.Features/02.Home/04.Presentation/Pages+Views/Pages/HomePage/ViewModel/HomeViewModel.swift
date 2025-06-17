@@ -21,7 +21,7 @@ final class HomeViewModel: BaseViewModel {
     private let favoriteMovieRepository: FavoriteMovieRepository
     
     // MARK: - Published Properties
-    @Published private(set) var movies: [Movie] = []
+    @Published private(set) var movies: [MovieViewItem] = []
     @Published private(set) var isLoading = false
     @Published private(set) var error: Error?
     
@@ -37,7 +37,7 @@ final class HomeViewModel: BaseViewModel {
 extension HomeViewModel: HomeViewModelProtocol {
     func fetchPopularMovies() async {
         do {
-           let result = try await fetchPopularMoviesUseCase.execute(request: ())
+            let result = try await fetchPopularMoviesUseCase.execute(request: ())
             movies = result
         } catch {
             print("Error is", error.localizedDescription)
@@ -47,10 +47,9 @@ extension HomeViewModel: HomeViewModelProtocol {
     func favoriteButtonTapped(_ movie: Movie, isFavorite: Bool) {
         do {
             if isFavorite {
-//                try favoriteMovieRepository.removeFromFavorites(movie)
                 try favoriteMovieRepository.addToFavorites(movie)
             } else {
-                try favoriteMovieRepository.addToFavorites(movie)
+                try favoriteMovieRepository.removeFromFavorites(movie)
             }
         } catch {
             print("Error managing favorites:", error.localizedDescription)
