@@ -1,10 +1,8 @@
 import UIKit
 
 enum FontName: String {
-    case urwdina = "URWDINArabic"
-    case tajawal = "Tajawal"
-    case neoSans = "NeoSansArabic"
-    case sans = "Sans"
+    case montserrat = "Montserrat"
+    case bebasNeue = "BebasNeue"
 }
 
 enum FontWeight: String {
@@ -16,16 +14,16 @@ enum FontWeight: String {
 
 extension UIFont {
     static func main(weight: FontWeight = .regular, ofSize size: CGFloat) -> UIFont{
-        return udwdina(weight: weight, ofSize: size)
+        return montserrat(weight: weight, ofSize: size)
     }
     
-    static func udwdina(weight: FontWeight = .regular, ofSize size: CGFloat) -> UIFont {
-        let fontName = "\(FontName.urwdina.rawValue)-\(weight.rawValue)"
+    static func montserrat(weight: FontWeight = .regular, ofSize size: CGFloat) -> UIFont {
+        let fontName = "\(FontName.montserrat.rawValue)-\(weight.rawValue)"
         return UIFont(name: fontName, size: size) ?? UIFont.systemFont(ofSize: size)
     }
     
-    static func tajawal(weight: FontWeight = .regular, ofSize size: CGFloat) -> UIFont {
-        let fontName = weight == .regular ? FontName.neoSans.rawValue : "\(FontName.neoSans.rawValue)-\(weight.rawValue)"
+    static func bebasNeue(weight: FontWeight = .regular, ofSize size: CGFloat) -> UIFont {
+        let fontName = "\(FontName.bebasNeue.rawValue)-\(weight.rawValue)"
         return UIFont(name: fontName, size: size) ?? UIFont.systemFont(ofSize: size)
     }
     

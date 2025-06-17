@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SplashVC" customModule="MiniMovieExplorer" customModuleProvider="target">
             <connections>
                 <outlet property="animationView" destination="so0-um-b0z" id="R7m-fP-LL3"/>
+                <outlet property="appNameLabel" destination="fig-Jw-hSV" id="l0c-2X-cgK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,25 +21,41 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="so0-um-b0z">
-                    <rect key="frame" x="137.66666666666666" y="367" width="117.66666666666666" height="118"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="G9s-9F-7r0">
+                    <rect key="frame" x="139.66666666666666" y="356.66666666666669" width="113.66666666666666" height="139"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="so0-um-b0z">
+                            <rect key="frame" x="9.6666666666666856" y="0.0" width="94.666666666666671" height="94.666666666666671"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="so0-um-b0z" secondAttribute="height" multiplier="1:1" id="xbr-bZ-miv"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Explorer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fig-Jw-hSV">
+                            <rect key="frame" x="0.66666666666668561" y="118.66666666666661" width="112.66666666666667" height="20.333333333333329"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="so0-um-b0z" secondAttribute="height" multiplier="1:1" id="xbr-bZ-miv"/>
+                        <constraint firstItem="so0-um-b0z" firstAttribute="width" secondItem="G9s-9F-7r0" secondAttribute="width" multiplier="0.3" constant="60.566666666666656" id="HU3-85-lkb"/>
                     </constraints>
-                </view>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="appBackground"/>
             <constraints>
-                <constraint firstItem="so0-um-b0z" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="O4l-y2-TmP"/>
-                <constraint firstItem="so0-um-b0z" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.3" id="tNC-qf-60X"/>
-                <constraint firstItem="so0-um-b0z" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xJI-3h-JWL"/>
+                <constraint firstItem="G9s-9F-7r0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="HKG-RM-Lh9"/>
+                <constraint firstItem="G9s-9F-7r0" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="MCn-gq-S2D"/>
             </constraints>
             <point key="canvasLocation" x="131" y="-11"/>
         </view>
     </objects>
     <resources>
+        <namedColor name="appBackground">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

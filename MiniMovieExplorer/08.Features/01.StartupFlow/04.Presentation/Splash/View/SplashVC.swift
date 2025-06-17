@@ -3,24 +3,35 @@ import UIKit
 final class SplashVC: BaseVC {
     
     @IBOutlet weak var animationView: UIView!
+    @IBOutlet weak var appNameLabel: UILabel!
     
     // MARK: - Setup View
     override func setupView() {
         setupLogtiteView()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            AppCoordinator.shared.showHome()
-        }
+        setupAppNameLabel()
+        showHome()
     }
 }
 
 // MARK: - Functions
 private extension SplashVC {
     func setupLogtiteView() {
-        animationView.configureLottieView(animation: "")
+        animationView.configureLottieView(animation: getLottieJsonFileName())
+    }
+    
+    func setupAppNameLabel() {
+        appNameLabel.font = UIFont.bebasNeue(ofSize: 24)
+        appNameLabel.popIn(duration: 1.5)
+    }
+    
+    func showHome() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            AppCoordinator.shared.showHome()
+        }
     }
     
     #warning("return animation file base on currnet them")
     func getLottieJsonFileName() -> String {
-        return ""
+        return Theme.isDarkMode() ? "splash_loader" : ""
     }
 }

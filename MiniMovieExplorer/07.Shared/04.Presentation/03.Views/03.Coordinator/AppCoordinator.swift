@@ -32,8 +32,8 @@ extension AppCoordinator: Coordinator {
     }
     
     func start() {
-//        showSplash()
-        showHome()
+        showSplash()
+//        showHome()
     }
     
     func showSplash() {

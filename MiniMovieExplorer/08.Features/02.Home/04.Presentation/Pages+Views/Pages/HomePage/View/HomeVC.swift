@@ -1,13 +1,14 @@
 import UIKit
 
 final class HomeVC: BaseVC {
-
-    // MARK: - Properties
-    private var viewModel: HomeViewModel
     
     // MARK: - IBOutlet
+    @IBOutlet weak var headerView: HomeHeaderView!
     @IBOutlet private weak var popularMoviesCollectionView: UICollectionView!
     
+    // MARK: - Properties
+    private var viewModel: HomeViewModel
+
     // MARK: -  Init
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
