@@ -9,17 +9,21 @@ class MovieDetailsHeader: BaseComponent {
     @IBOutlet weak var genresCollectionView: UICollectionView!
     
     // MARK: - Proeprties
-    var genres: [Genre] = [.init(id: 1, name: "Action"), .init(id: 2, name: "Adventure")] {
+    var genres: [Genre] = [] {
         didSet {
             genresCollectionView.reloadData()
         }
     }
     
+    var backButtonAction: () -> Void = { } {
+        didSet {
+            backButton.onTap = backButtonAction
+        }
+    }
     
     // MARK: - NIB
     override func nibSetup() {
         super.nibSetup()
-        
         configureCollectionViews()
     }
 
@@ -42,7 +46,7 @@ extension MovieDetailsHeader {
             guard let collectionView else { return }
             collectionView.dataSource = self
             collectionView.delegate = self
-            collectionView.collectionViewLayout = MovieCollectionViewLayout()
+//            collectionView.collectionViewLayout = MovieCollectionViewLayout()
         }
     }
 }
