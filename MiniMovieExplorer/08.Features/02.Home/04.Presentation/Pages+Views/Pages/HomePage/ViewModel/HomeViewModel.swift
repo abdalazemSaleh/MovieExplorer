@@ -57,8 +57,13 @@ extension HomeViewModel: HomeViewModelProtocol {
             movies.append(contentsOf: newMovies)
             filterMovies()
         } catch {
+            /// validate if error is in first api call show status view else show snakebar, this action for better user experiance
             handelError(error) { errorMessage in
+                isLoadingOtherPages
+                ?
                 screenState = .error(errorMessage)
+                :
+                coordinator.showSnakeBar(message: errorMessage)
             }
         }
     }

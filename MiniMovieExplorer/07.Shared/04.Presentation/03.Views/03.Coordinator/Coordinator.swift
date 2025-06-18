@@ -33,4 +33,12 @@ extension Coordinator {
     func showAlert(alert: UIAlertController) {
         router.present(alert)
     }
+    
+    func showSnakeBar(message: String) {
+        if let view = currentViewController.view {
+            SnackbarView.show(message: message, in: view)
+        } else {
+            print("Error while show bar")
+        }
+    }
 }
