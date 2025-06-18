@@ -3,6 +3,7 @@ import UIKit
 class MovieDetailsVC: BaseVC {
     
     // MARK: - IBOutlet
+    @IBOutlet weak var headerView: MovieDetailsHeader!
     
     // MARK: - Properties
 //    private var viewModel: HomeViewModel
@@ -19,7 +20,12 @@ class MovieDetailsVC: BaseVC {
     
     // MARK: - Setup View
     override func setupView() {
+        setupHeaderView()
 //        setupBindings()
+    }
+    
+    private func setupHeaderView() {
+        headerView.genres = [.init(id: 1, name: "Action"), .init(id: 2, name: "Adventure")]
     }
     
     private func setupBindings() {

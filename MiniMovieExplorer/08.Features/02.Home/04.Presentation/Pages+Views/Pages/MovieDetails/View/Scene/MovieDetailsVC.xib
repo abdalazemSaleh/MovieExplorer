@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailsVC" customModule="MiniMovieExplorer" customModuleProvider="target">
             <connections>
+                <outlet property="headerView" destination="KrR-Qm-j0v" id="EwG-03-bd8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
