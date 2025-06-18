@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavoriteHeaderView" customModule="MiniMovieExplorer" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="HPM-Sf-wj3" id="qqg-Tw-Cuj"/>
+                <outlet property="searchTextField" destination="WUh-nN-krm" id="zkI-ba-2WX"/>
+                <outlet property="searchTextFieldHeight" destination="1l9-cG-Wi5" id="PMa-sm-ltT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="NND-Ft-yJ2">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="386"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ot8-Pc-TrL">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="386"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5I5-35-oyj">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="386"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="3nB-gq-Vd7">
+                                <rect key="frame" x="20" y="64" width="353" height="314"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eDl-8e-MU0">
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="242"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPM-Sf-wj3">
+                                                <rect key="frame" x="0.0" y="105" width="32" height="32"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="9Wy-d9-6DV"/>
+                                                    <constraint firstAttribute="width" constant="32" id="rFF-Tk-TWj"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain">
+                                                    <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="medium"/>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="backButton:" destination="-1" eventType="touchUpInside" id="eqT-j9-HWw"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZe-VQ-pcD">
+                                                <rect key="frame" x="40" y="111" width="313" height="20.333333333333343"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="FontSemiBoldSize">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search series, films...." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUh-nN-krm">
+                                        <rect key="frame" x="0.0" y="258" width="353" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="1l9-cG-Wi5"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="3nB-gq-Vd7" secondAttribute="bottom" constant="8" id="5hp-82-Fga"/>
+                            <constraint firstItem="3nB-gq-Vd7" firstAttribute="top" secondItem="5I5-35-oyj" secondAttribute="top" constant="64" id="IEs-Kg-nQz"/>
+                            <constraint firstItem="3nB-gq-Vd7" firstAttribute="leading" secondItem="5I5-35-oyj" secondAttribute="leading" constant="20" id="TSN-jq-vtl"/>
+                            <constraint firstAttribute="trailing" secondItem="3nB-gq-Vd7" secondAttribute="trailing" constant="20" id="xr8-Bo-pPp"/>
+                        </constraints>
+                    </view>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <blurEffect style="systemThinMaterial"/>
+                </visualEffectView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="b1g-ET-HYi"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ot8-Pc-TrL" secondAttribute="bottom" id="YiQ-t0-CbZ"/>
+                <constraint firstItem="b1g-ET-HYi" firstAttribute="trailing" secondItem="ot8-Pc-TrL" secondAttribute="trailing" id="Zye-Lu-C0F"/>
+                <constraint firstItem="ot8-Pc-TrL" firstAttribute="top" secondItem="NND-Ft-yJ2" secondAttribute="top" id="iGu-5g-9et"/>
+                <constraint firstItem="ot8-Pc-TrL" firstAttribute="leading" secondItem="NND-Ft-yJ2" secondAttribute="leading" id="n8O-wL-7au"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="533.58778625954199" y="-437.32394366197184"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+    </resources>
+</document>

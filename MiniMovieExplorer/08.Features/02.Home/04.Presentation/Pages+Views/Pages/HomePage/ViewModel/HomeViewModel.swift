@@ -3,15 +3,19 @@ import SwiftData
 
 @MainActor
 protocol HomeViewModelProtocol {
+    /// functions
     func fetchPopularMovies() async
     func favoriteButtonTapped(_ movie: Movie, isFavorite: Bool)
     func isFavorite(_ movie: Movie) -> Bool
+    /// navigation
+    func showFavoritesPage()
 }
 
 final class HomeViewModel: BaseViewModel {
     // MARK: - Properties
     private let fetchPopularMoviesUseCase: FetchPopularMoviesUseCase
     private let favoriteMovieRepository: FavoriteMovieRepository
+    private let coordinator: HomeCoordinator
     
     // MARK: - Published Properties
     @Published private(set) var movies: [MovieViewItem] = []
@@ -25,10 +29,14 @@ final class HomeViewModel: BaseViewModel {
     }
     
     // MARK: - Init
-    init(fetchPopularMoviesUseCase: FetchPopularMoviesUseCase,
-         favoriteMovieRepository: FavoriteMovieRepository) {
+    init(
+        fetchPopularMoviesUseCase: FetchPopularMoviesUseCase,
+        favoriteMovieRepository: FavoriteMovieRepository,
+        coordinator: HomeCoordinator
+    ) {
         self.fetchPopularMoviesUseCase = fetchPopularMoviesUseCase
         self.favoriteMovieRepository = favoriteMovieRepository
+        self.coordinator = coordinator
         super.init()
         Task {
             await fetchPopularMovies()
@@ -54,6 +62,13 @@ extension HomeViewModel: HomeViewModelProtocol {
     
     func isFavorite(_ movie: Movie) -> Bool {
         return favoriteMovieRepository.isFavorite(movie)
+    }
+}
+
+// MARK: - Navigations
+extension HomeViewModel {
+    func showFavoritesPage() {
+        coordinator.showFavoritesPage()
     }
 }
 

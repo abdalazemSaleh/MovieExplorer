@@ -34,15 +34,27 @@ final class MovieDependencyContainer {
     }
     
     // MARK: - View Models
-    func makeHomeViewModel() -> HomeViewModel {
+    func makeHomeViewModel(coordinator: HomeCoordinator) -> HomeViewModel {
         return HomeViewModel(
             fetchPopularMoviesUseCase: makeFetchPopularMoviesUseCase(),
-            favoriteMovieRepository: makeFavoriteMovieRepository()
+            favoriteMovieRepository: makeFavoriteMovieRepository(),
+            coordinator: coordinator
+        )
+    }
+    
+    func makeFavoriteViewModel(coordinator: HomeCoordinator) -> FavoriteViewModel {
+        return FavoriteViewModel(
+            favoriteMovieRepository: makeFavoriteMovieRepository(),
+            coordinator: coordinator
         )
     }
     
     // MARK: - View Controller
-    func makeHomeViewController() -> HomeVC {
-        return HomeVC(viewModel: makeHomeViewModel())
+    func makeHomeViewController(coordinator: HomeCoordinator) -> HomeVC {
+        return HomeVC(viewModel: makeHomeViewModel(coordinator: coordinator))
+    }
+    
+    func makeFavoritesViewController(coordinator: HomeCoordinator) -> FavoriteVC {
+        return FavoriteVC(viewModel: makeFavoriteViewModel(coordinator: coordinator))
     }
 }

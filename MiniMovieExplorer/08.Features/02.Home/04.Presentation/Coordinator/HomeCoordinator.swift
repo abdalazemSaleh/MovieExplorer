@@ -19,7 +19,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     }
     
     func showHomePage() {
-        let viewController = movieConainer.makeHomeViewController()
+        let viewController = movieConainer.makeHomeViewController(coordinator: self)
         router.push(viewController)
     }
     
@@ -28,6 +28,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     }
     
     func showFavoritesPage() {
-        
+        let viewController = movieConainer.makeFavoritesViewController(coordinator: self)
+        router.push(viewController)
     }
 }

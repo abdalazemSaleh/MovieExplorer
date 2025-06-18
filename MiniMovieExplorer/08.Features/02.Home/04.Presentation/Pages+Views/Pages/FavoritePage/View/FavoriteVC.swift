@@ -1,17 +1,16 @@
 import UIKit
 
-final class HomeVC: BaseVC {
-    
+class FavoriteVC: BaseVC {
     // MARK: - IBOutlet
-    @IBOutlet weak var headerView: HomeHeaderView!
-    @IBOutlet private weak var popularMoviesCollectionView: UICollectionView!
+    @IBOutlet private weak var favoritesCollectionView: UICollectionView!
+    @IBOutlet weak var headerView: FavoriteHeaderView!
     
     // MARK: - Properties
-    private var viewModel: HomeViewModel
+    private var viewModel: FavoriteViewModel
     private var lastContentOffset: CGFloat = 0
 
-    // MARK: -  Init
-    init(viewModel: HomeViewModel) {
+    //    MARK: -  Init
+    init(viewModel: FavoriteViewModel) {
         self.viewModel = viewModel
         super.init()
     }
@@ -22,12 +21,13 @@ final class HomeVC: BaseVC {
     
     // MARK: - Setup View
     override func setupView() {
-        setupHomeHeaderView()
+        setupFavoriteHeaderView()
         configureCollectionViews()
         setupBindings()
     }
-    private func setupHomeHeaderView() {
-        headerView.favoriteButtonAction = { [weak self] in self?.viewModel.showFavoritesPage() }
+    
+    private func setupFavoriteHeaderView() {
+        headerView.backButtonAction = { [weak self] in self?.viewModel.backButtonTapped() }
     }
     
     private func setupBindings() {
@@ -40,20 +40,20 @@ final class HomeVC: BaseVC {
         
         viewModel.$filteredMovies
             .sink { [weak self] _ in
-                self?.popularMoviesCollectionView.reloadData()
+                self?.favoritesCollectionView.reloadData()
             }
             .store(in: &subscription)
     }
 }
 
 // MARK: - Configure Collection Views
-private extension HomeVC {
+private extension FavoriteVC {
     func configureCollectionViews() {
         ///  register cells
-        popularMoviesCollectionView.register(cellType: MovieCollectionViewCell.self)
+        favoritesCollectionView.register(cellType: MovieCollectionViewCell.self)
         
         /// setup delegate and data source
-        let collectionViews = [popularMoviesCollectionView]
+        let collectionViews = [favoritesCollectionView]
         collectionViews.forEach { collectionView in
             guard let collectionView else { return }
             collectionView.dataSource = self
@@ -64,7 +64,7 @@ private extension HomeVC {
 }
 
 // MARK: - Collection View Delegate And Data Source
-extension HomeVC: CollectionViewProtocols {
+extension FavoriteVC: CollectionViewProtocols {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.filteredMovies.count
     }
@@ -73,13 +73,9 @@ extension HomeVC: CollectionViewProtocols {
         let cell = collectionView.dequeueReusableCell(with: MovieCollectionViewCell.self, for: indexPath)
         let movieViewItem = viewModel.filteredMovies[indexPath.row]
         cell.configure(with: movieViewItem) { [weak self] isFavorite in
-            self?.viewModel.favoriteButtonTapped(movieViewItem.movie, isFavorite: isFavorite)
+            self?.viewModel.removeFromFavorite(movieViewItem.movie)
         }
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        viewModel.loadMoreIfNeeded(currentItem: indexPath.item)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

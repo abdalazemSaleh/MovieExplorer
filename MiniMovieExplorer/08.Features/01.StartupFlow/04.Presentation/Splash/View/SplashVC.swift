@@ -25,7 +25,7 @@ private extension SplashVC {
     }
     
     func showHome() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
             AppCoordinator.shared.showHome()
         }
     }
