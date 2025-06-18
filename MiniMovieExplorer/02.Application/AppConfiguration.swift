@@ -1,6 +1,5 @@
 import NetworkLayer
 import UIKit
-import Resolver
 
 class AppConfiguration {
     
