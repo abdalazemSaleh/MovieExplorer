@@ -12,6 +12,11 @@ class HomeHeaderView: BaseComponent {
     var favoriteButtonAction: () -> Void = { }
     let searchText = EventPublisher<String>()
     
+    struct Constant {
+        static let SEARCH_FIELD_MAX_HEIGHT: CGFloat = 56
+        static let SEARCH_FIELD_MIN_HEIGHT: CGFloat = 0
+    }
+    
     // MARK: - NIB
     override func nibSetup() {
         super.nibSetup()

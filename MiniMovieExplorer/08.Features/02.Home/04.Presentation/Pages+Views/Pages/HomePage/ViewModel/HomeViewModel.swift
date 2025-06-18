@@ -60,6 +60,7 @@ extension HomeViewModel: HomeViewModelProtocol {
 // MARK: - Pagination Functions
 extension HomeViewModel {
     func loadMoreIfNeeded(currentItem: Int) {
+        guard searchText.isEmpty else { return }
         guard fetchPopularMoviesUseCase.canLoadMore(),
               currentItem >= filteredMovies.count - 5 else { return }
         Task {
@@ -92,9 +93,6 @@ private extension HomeViewModel {
         }
     }
     
-    #warning("Important bug")
-    #warning("While fillter he see the last cells which lead to load nex page from remote data source, I only need to fillter the local data")
-    #warning("Disable load next page if search text is not empty")
     func filterMovies() {
         if searchText.isEmpty {
             filteredMovies = movies

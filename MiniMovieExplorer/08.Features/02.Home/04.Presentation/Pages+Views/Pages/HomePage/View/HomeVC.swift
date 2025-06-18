@@ -9,8 +9,6 @@ final class HomeVC: BaseVC {
     // MARK: - Properties
     private var viewModel: HomeViewModel
     private var lastContentOffset: CGFloat = 0
-    private let searchFieldMaxHeight: CGFloat = 56
-    private let searchFieldMinHeight: CGFloat = 0
 
     // MARK: -  Init
     init(viewModel: HomeViewModel) {
@@ -30,6 +28,7 @@ final class HomeVC: BaseVC {
     
     private func setupBindings() {
         headerView.searchText
+            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
             .sink { [weak self] text in
                 self?.viewModel.searchText = text
             }
@@ -84,7 +83,7 @@ extension HomeVC: CollectionViewProtocols {
         
         if currentOffset <= 0 {
             UIView.animate(withDuration: 0.2) {
-                self.headerView.searchTextFieldHeight.constant = self.searchFieldMaxHeight
+                self.headerView.searchTextFieldHeight.constant = HomeHeaderView.Constant.SEARCH_FIELD_MAX_HEIGHT
                 self.view.layoutIfNeeded()
             }
             lastContentOffset = 0
@@ -99,9 +98,9 @@ extension HomeVC: CollectionViewProtocols {
         
         var newHeight: CGFloat
         if isScrollingDown {
-            newHeight = max(searchFieldMinHeight, currentHeight - abs(differenceFromStart))
+            newHeight = max(HomeHeaderView.Constant.SEARCH_FIELD_MIN_HEIGHT, currentHeight - abs(differenceFromStart))
         } else if isScrollingUp {
-            newHeight = min(searchFieldMaxHeight, currentHeight + abs(differenceFromStart))
+            newHeight = min(HomeHeaderView.Constant.SEARCH_FIELD_MAX_HEIGHT, currentHeight + abs(differenceFromStart))
         } else {
             return
         }
