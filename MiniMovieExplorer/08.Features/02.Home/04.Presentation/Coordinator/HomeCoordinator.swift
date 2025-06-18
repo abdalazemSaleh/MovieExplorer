@@ -15,8 +15,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     }
     
     func start() {
-//        showHomePage()
-        showMovieDetailsPage(movieId: 575265)
+        showHomePage()
     }
     
     func showHomePage() {

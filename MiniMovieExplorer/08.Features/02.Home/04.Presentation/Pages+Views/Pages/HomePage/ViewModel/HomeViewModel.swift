@@ -9,6 +9,7 @@ protocol HomeViewModelProtocol {
     func isFavorite(_ movie: Movie) -> Bool
     /// navigation
     func showFavoritesPage()
+    func showDetails(movieID: Int)
 }
 
 final class HomeViewModel: BaseViewModel {
@@ -69,6 +70,10 @@ extension HomeViewModel: HomeViewModelProtocol {
 extension HomeViewModel {
     func showFavoritesPage() {
         coordinator.showFavoritesPage()
+    }
+    
+    func showDetails(movieID: Int) {
+        coordinator.showMovieDetailsPage(movieId: movieID)
     }
 }
 

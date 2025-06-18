@@ -78,6 +78,11 @@ extension HomeVC: CollectionViewProtocols {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movie = viewModel.filteredMovies[indexPath.row]
+        viewModel.showDetails(movieID: movie.movie.id)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         viewModel.loadMoreIfNeeded(currentItem: indexPath.item)
     }
