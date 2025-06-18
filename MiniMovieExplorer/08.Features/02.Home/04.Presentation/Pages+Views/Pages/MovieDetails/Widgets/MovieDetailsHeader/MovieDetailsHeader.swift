@@ -3,6 +3,7 @@ import UIKit
 class MovieDetailsHeader: BaseComponent {
 
     // MARK: - IBOUTLET
+    @IBOutlet weak var movieImageVIew: AsyncCachedImageView!
     @IBOutlet weak var backButton: BlurButton!
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var movieYearLabel: UILabel!
@@ -12,6 +13,15 @@ class MovieDetailsHeader: BaseComponent {
     var genres: [Genre] = [] {
         didSet {
             genresCollectionView.reloadData()
+        }
+    }
+    
+    var movie: MovieDetails? {
+        didSet {
+            guard let movie else { return }
+            movieImageVIew.loadImage(from: movie.backdropURL)
+            movieNameLabel.text = movie.title
+            genres = movie.genres
         }
     }
     
@@ -46,7 +56,6 @@ extension MovieDetailsHeader {
             guard let collectionView else { return }
             collectionView.dataSource = self
             collectionView.delegate = self
-//            collectionView.collectionViewLayout = MovieCollectionViewLayout()
         }
     }
 }

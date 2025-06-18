@@ -17,7 +17,6 @@ class AsyncCachedImageView: UIImageView {
     }
     
     private func setupView() {
-        self.contentMode = .scaleAspectFill
         self.image = placeholder
         setupActivityIndicator()
     }

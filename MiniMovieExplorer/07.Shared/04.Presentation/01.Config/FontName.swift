@@ -8,7 +8,7 @@ enum FontName: String {
 enum FontWeight: String {
     case regular = "Regular"
     case medium = "Medium"
-    case semiBold = "Demi"
+    case semiBold = "SemiBold"
     case bold = "Bold"
 }
 

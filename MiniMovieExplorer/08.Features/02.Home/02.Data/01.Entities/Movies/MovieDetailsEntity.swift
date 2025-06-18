@@ -22,10 +22,23 @@ struct MovieDetailsEntity: MovieSummaryProtocol {
     let budget: Int?
     let revenue: Int?
     let tagline: String?
-    let status: String
+    let status: String?
     let homepage: String?
     
     enum CodingKeys: String, CodingKey {
+        case id
+        case adult
+        case backdropPath = "backdrop_path"
+        case originalLanguage = "original_language"
+        case originalTitle = "original_title"
+        case overview
+        case popularity
+        case posterPath = "poster_path"
+        case releaseDate = "release_date"
+        case title
+        case video
+        case voteAverage = "vote_average"
+        case voteCount = "vote_count"
         case runtime
         case genres
         case productionCompanies = "production_companies"

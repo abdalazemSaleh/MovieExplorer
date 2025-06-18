@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import SwiftData
 
-final class MovieDependencyContainer {    
+final class MovieDependencyContainer {
     // MARK: - Data Source
     func makeMoviesDataSource() -> MoviesDataSource {
         return MoviesRemoteDataSource()
@@ -49,6 +49,14 @@ final class MovieDependencyContainer {
         )
     }
     
+    func makeMovieDetailsViewModel(movieId: Int, coordinator: HomeCoordinator) -> MovieDetailsViewModel {
+        return MovieDetailsViewModel(
+            fetchMovieDetailsUseCase: makeFetchMovieDetailsUseCase(),
+            coordinator: coordinator,
+            movieID: movieId
+        )
+    }
+    
     // MARK: - View Controller
     func makeHomeViewController(coordinator: HomeCoordinator) -> HomeVC {
         return HomeVC(viewModel: makeHomeViewModel(coordinator: coordinator))
@@ -56,5 +64,9 @@ final class MovieDependencyContainer {
     
     func makeFavoritesViewController(coordinator: HomeCoordinator) -> FavoriteVC {
         return FavoriteVC(viewModel: makeFavoriteViewModel(coordinator: coordinator))
+    }
+    
+    func makeMovieDetailsViewController(movieId: Int, coordinator: HomeCoordinator) -> MovieDetailsVC {
+        return MovieDetailsVC(viewModel: makeMovieDetailsViewModel(movieId: movieId, coordinator: coordinator))
     }
 }

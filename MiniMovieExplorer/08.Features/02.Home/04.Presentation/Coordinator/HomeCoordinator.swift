@@ -15,7 +15,8 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     }
     
     func start() {
-        showHomePage()
+//        showHomePage()
+        showMovieDetailsPage(movieId: 575265)
     }
     
     func showHomePage() {
@@ -24,7 +25,8 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     }
     
     func showMovieDetailsPage(movieId: Int) {
-        
+        let vc = movieConainer.makeMovieDetailsViewController(movieId: movieId, coordinator: self)
+        router.push(vc)
     }
     
     func showFavoritesPage() {

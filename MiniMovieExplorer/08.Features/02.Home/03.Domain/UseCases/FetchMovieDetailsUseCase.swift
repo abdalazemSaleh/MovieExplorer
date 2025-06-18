@@ -11,5 +11,4 @@ final class FetchMovieDetailsUseCase: BaseUseCase {
     func execute(request: Request) async throws -> Response {
         return try await repository.fetchMovieDetails(id: request)
     }
-    
 }
