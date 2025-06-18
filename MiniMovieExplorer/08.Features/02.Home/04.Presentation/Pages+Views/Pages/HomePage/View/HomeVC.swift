@@ -44,6 +44,22 @@ final class HomeVC: BaseVC {
                 self?.popularMoviesCollectionView.reloadData()
             }
             .store(in: &subscription)
+        
+        viewModel.$screenState
+            .sink { [weak self] state in
+                guard let self else { return }
+                guard !viewModel.isLoadingOtherPages else { return }
+                stateView.currentState = state
+                switch state {
+                case .content:
+                    stateView.hide()
+                    popularMoviesCollectionView.show()
+                default:
+                    popularMoviesCollectionView.hide()
+                    stateView.show()
+                }
+            }
+            .store(in: &subscription)
     }
 }
 

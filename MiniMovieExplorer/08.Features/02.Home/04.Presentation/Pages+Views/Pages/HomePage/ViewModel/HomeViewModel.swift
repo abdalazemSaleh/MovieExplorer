@@ -1,5 +1,6 @@
 import Foundation
 import SwiftData
+import Combine
 
 @MainActor
 protocol HomeViewModelProtocol {
@@ -18,16 +19,18 @@ final class HomeViewModel: BaseViewModel {
     private let favoriteMovieRepository: FavoriteMovieRepository
     private let coordinator: HomeCoordinator
     
+    
     // MARK: - Published Properties
+    @Published var screenState: ScreenState = .loading
     @Published private(set) var movies: [MovieViewItem] = []
     @Published private(set) var filteredMovies: [MovieViewItem] = []
-    @Published private(set) var isLoading = false
-    @Published private(set) var error: Error?
     @Published var searchText: String = "" {
         didSet {
             filterMovies()
         }
     }
+    
+    var isLoadingOtherPages = false
     
     // MARK: - Init
     init(
@@ -39,9 +42,9 @@ final class HomeViewModel: BaseViewModel {
         self.favoriteMovieRepository = favoriteMovieRepository
         self.coordinator = coordinator
         super.init()
-//        Task {
-//            await fetchPopularMovies()
-//        }
+        Task {
+            await fetchPopularMovies()
+        }
     }
 }
 
@@ -49,11 +52,14 @@ final class HomeViewModel: BaseViewModel {
 extension HomeViewModel: HomeViewModelProtocol {
     func fetchPopularMovies() async {
         do {
+            screenState = .loading
             let newMovies = try await fetchPopularMoviesUseCase.execute(request: ())
             movies.append(contentsOf: newMovies)
             filterMovies()
         } catch {
-            print("Error is", error.localizedDescription)
+            handelError(error) { errorMessage in
+                screenState = .error(errorMessage)
+            }
         }
     }
     
@@ -114,13 +120,16 @@ private extension HomeViewModel {
     }
     
     func filterMovies() {
+        defer { isLoadingOtherPages = true }
         if searchText.isEmpty {
             filteredMovies = movies
+            screenState = filteredMovies.isEmpty ? .empty : .content
         } else {
             filteredMovies = movies.filter { movie in
                 movie.movie.title.localizedCaseInsensitiveContains(searchText) ||
                 movie.movie.overview.localizedCaseInsensitiveContains(searchText)
             }
+            screenState = filteredMovies.isEmpty ? .empty : .content
         }
     }
 }
