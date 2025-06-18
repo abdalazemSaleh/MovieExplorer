@@ -33,6 +33,6 @@ final class MovieCollectionViewLayout: UICollectionViewFlowLayout {
         
         let availableWidth = collectionView.bounds.width - (padding * 2) - spacing
         let itemWidth = availableWidth / 2
-        itemSize = CGSize(width: itemWidth, height: itemWidth * 1.5)
+        itemSize = CGSize(width: itemWidth, height: (itemWidth * 1.5) + 28)
     }
 } 

@@ -29,6 +29,10 @@ final class HomeViewModel: BaseViewModel {
          favoriteMovieRepository: FavoriteMovieRepository) {
         self.fetchPopularMoviesUseCase = fetchPopularMoviesUseCase
         self.favoriteMovieRepository = favoriteMovieRepository
+        super.init()
+        Task {
+            await fetchPopularMovies()
+        }
     }
 }
 

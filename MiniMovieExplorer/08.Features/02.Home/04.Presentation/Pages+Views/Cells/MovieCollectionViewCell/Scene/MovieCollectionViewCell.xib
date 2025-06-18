@@ -21,41 +21,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="127" height="225"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="MovieBackground_img" translatesAutoresizingMaskIntoConstraints="NO" id="mPL-RO-qNa" customClass="AsyncCachedImageView" customModule="MiniMovieExplorer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="127" height="225"/>
+                                <rect key="frame" x="0.0" y="0.0" width="127" height="193"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rp7-nw-Zdf">
-                                <rect key="frame" x="8" y="182.66666666666666" width="111" height="30.333333333333343"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mad Max" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1D-Ps-okd">
-                                        <rect key="frame" x="16" y="8" width="79" height="14.333333333333336"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="FontSemiBoldSize">
-                                                <real key="value" value="12"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="e1D-Ps-okd" firstAttribute="leading" secondItem="rp7-nw-Zdf" secondAttribute="leading" constant="16" id="eg2-SR-Zh6"/>
-                                    <constraint firstAttribute="bottom" secondItem="e1D-Ps-okd" secondAttribute="bottom" constant="8" id="ff3-Qu-v6b"/>
-                                    <constraint firstItem="e1D-Ps-okd" firstAttribute="top" secondItem="rp7-nw-Zdf" secondAttribute="top" constant="8" id="h25-LY-IoT"/>
-                                    <constraint firstAttribute="trailing" secondItem="e1D-Ps-okd" secondAttribute="trailing" constant="16" id="xVF-LD-rZ0"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1KW-Po-U8r" customClass="FavoriteButton" customModule="MiniMovieExplorer" customModuleProvider="target">
                                 <rect key="frame" x="79" y="16" width="32" height="32"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -64,17 +36,28 @@
                                     <constraint firstAttribute="width" constant="32" id="XWz-7b-hL6"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mad Max" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1D-Ps-okd">
+                                <rect key="frame" x="0.0" y="201" width="127" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="FontSemiBoldSize">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="e1D-Ps-okd" firstAttribute="leading" secondItem="ZjV-2U-Uf1" secondAttribute="leading" id="5DW-BZ-jLb"/>
                             <constraint firstAttribute="trailing" secondItem="mPL-RO-qNa" secondAttribute="trailing" id="5Lp-re-Omw"/>
                             <constraint firstItem="mPL-RO-qNa" firstAttribute="leading" secondItem="ZjV-2U-Uf1" secondAttribute="leading" id="70g-0j-Jou"/>
-                            <constraint firstAttribute="trailing" secondItem="rp7-nw-Zdf" secondAttribute="trailing" constant="8" id="AY4-nP-iGi"/>
                             <constraint firstItem="1KW-Po-U8r" firstAttribute="top" secondItem="ZjV-2U-Uf1" secondAttribute="top" constant="16" id="MN7-m0-cLZ"/>
-                            <constraint firstAttribute="bottom" secondItem="mPL-RO-qNa" secondAttribute="bottom" id="Xcr-JR-h7Z"/>
-                            <constraint firstItem="rp7-nw-Zdf" firstAttribute="leading" secondItem="ZjV-2U-Uf1" secondAttribute="leading" constant="8" id="hvH-h6-8nc"/>
+                            <constraint firstAttribute="bottom" secondItem="mPL-RO-qNa" secondAttribute="bottom" constant="32" id="Xcr-JR-h7Z"/>
+                            <constraint firstItem="e1D-Ps-okd" firstAttribute="top" secondItem="mPL-RO-qNa" secondAttribute="bottom" constant="8" id="gpb-LR-n56"/>
+                            <constraint firstAttribute="trailing" secondItem="e1D-Ps-okd" secondAttribute="trailing" id="j30-8a-VK1"/>
                             <constraint firstAttribute="trailing" secondItem="1KW-Po-U8r" secondAttribute="trailing" constant="16" id="mft-5D-wHX"/>
-                            <constraint firstAttribute="bottom" secondItem="rp7-nw-Zdf" secondAttribute="bottom" constant="12" id="uHB-Ig-KEz"/>
+                            <constraint firstAttribute="bottom" secondItem="e1D-Ps-okd" secondAttribute="bottom" constant="8" id="uLi-Ra-cgK"/>
                             <constraint firstItem="mPL-RO-qNa" firstAttribute="top" secondItem="ZjV-2U-Uf1" secondAttribute="top" id="z7h-un-3oA"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>

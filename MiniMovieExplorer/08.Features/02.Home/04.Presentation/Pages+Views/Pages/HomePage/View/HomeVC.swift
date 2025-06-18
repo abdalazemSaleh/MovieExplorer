@@ -25,14 +25,16 @@ final class HomeVC: BaseVC {
     // MARK: - Setup View
     override func setupView() {
         configureCollectionViews()
-        configureSearchBar()
-        Task {
-            await viewModel.fetchPopularMovies()
-        }
         setupBindings()
     }
     
     private func setupBindings() {
+        headerView.searchText
+            .sink { [weak self] text in
+                self?.viewModel.searchText = text
+            }
+            .store(in: &subscription)
+        
         viewModel.$filteredMovies
             .sink { [weak self] _ in
                 self?.popularMoviesCollectionView.reloadData()
@@ -55,10 +57,6 @@ private extension HomeVC {
             collectionView.delegate = self
             collectionView.collectionViewLayout = MovieCollectionViewLayout()
         }
-    }
-    
-    func configureSearchBar() {
-        headerView.searchTextField.delegate = self
     }
 }
 
@@ -114,22 +112,5 @@ extension HomeVC: CollectionViewProtocols {
         }
         
         lastContentOffset = currentOffset
-    }
-}
-
-// MARK: - UISearchBarDelegate
-extension HomeVC: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.searchText = searchText
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        viewModel.searchText = ""
-        searchBar.resignFirstResponder()
     }
 }
