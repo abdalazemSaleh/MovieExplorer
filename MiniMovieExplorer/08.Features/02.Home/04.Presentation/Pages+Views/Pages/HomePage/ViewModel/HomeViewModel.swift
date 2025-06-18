@@ -130,6 +130,7 @@ private extension HomeViewModel {
             filteredMovies = movies
             screenState = filteredMovies.isEmpty ? .empty : .content
         } else {
+            isLoadingOtherPages = false
             filteredMovies = movies.filter { movie in
                 movie.movie.title.localizedCaseInsensitiveContains(searchText) ||
                 movie.movie.overview.localizedCaseInsensitiveContains(searchText)

@@ -5,11 +5,14 @@ final class StateView: BaseComponent {
         
     // MARK: - IBOutlets
     @IBOutlet private weak var containerView: UIView!
-//    @IBOutlet private weak var animationView: LottieAnimationView!
+    @IBOutlet private weak var lottieView: LottieAnimationView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var reloadButton: UIButton!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    
+    // MARK: - Properties
+    let animationView = LottieAnimationView()
     
     // MARK: - Callbacks
     var onReload: (() -> Void)?
@@ -20,16 +23,7 @@ final class StateView: BaseComponent {
             updateUI()
         }
     }
-    
-//    // MARK: - Init
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//    }
-    
+        
     // MARK: - NIB
     override func nibSetup() {
         super.nibSetup()
@@ -38,8 +32,11 @@ final class StateView: BaseComponent {
     
     // MARK: - Setup
     private func setupUI() {
-//        animationView.contentMode = .scaleAspectFit
-//        animationView.loopMode = .loop
+        animationView.frame.size = lottieView.frame.size
+        animationView.loopMode = .loop
+        animationView.contentMode = .scaleAspectFit
+
+        lottieView.addSubview(animationView)
         
         titleLabel.font = .systemFont(ofSize: 18, weight: .bold)
         titleLabel.textColor = .label
@@ -58,25 +55,14 @@ final class StateView: BaseComponent {
     private func updateUI() {
         switch currentState {
         case .loading:
-            print("Loading....")
             showLoading()
         case .empty:
             showState(.empty)
         case .error(let errorMessage):
             showState(.error(errorMessage))
-//                        showState(state)
-//            reloadButton.isHidden = true
         case .content:
             self.hide()
         }
-//        if isLoading {
-//            print("Loading........")
-//            showLoading()
-//        } else if let state = currentState {
-//            showState(state)
-//        } else {
-//            hide()
-//        }
     }
     
     private func showLoading() {
@@ -91,21 +77,21 @@ final class StateView: BaseComponent {
         
         switch state {
         case .empty:
-//            animationView.animation = .named("empty_state")
+            animationView.animation = .named("empty_state")
             titleLabel.text = "No Results"
             descriptionLabel.text = "We couldn't find any movies matching your search."
-            reloadButton.isHidden = true
+            reloadButton.hide()
             
         case .error(let message):
-//            animationView.animation = .named("error_state")
+            animationView.animation = .named("error_sate")
             titleLabel.text = "Oops!"
             descriptionLabel.text = message
-            reloadButton.isHidden = false
+            reloadButton.show()
         default:
             break
         }
         
-//        animationView.play()
+        animationView.play()
         show()
     }
     

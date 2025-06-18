@@ -32,6 +32,7 @@ private extension SplashVC {
     
     #warning("return animation file base on currnet them")
     func getLottieJsonFileName() -> String {
-        return Theme.isDarkMode() ? "splash_loader" : ""
+        return "splash_loader"
+//        return Theme.isDarkMode() ?  : ""
     }
 }
