@@ -32,7 +32,9 @@ extension AppCoordinator: Coordinator {
     }
     
     func start() {
-        showSplash()
+        let vc = MovieDetailsVC()
+        router.push(vc)
+//        showSplash()
 //        showHome()
     }
     

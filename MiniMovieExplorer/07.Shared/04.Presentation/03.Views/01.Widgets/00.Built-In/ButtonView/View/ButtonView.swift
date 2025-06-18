@@ -48,7 +48,7 @@ class ButtonView: BaseComponent {
         didSet { updateText() }
     }
 
-    @IBInspectable var leadingImage: UIImage = .icSharedArrowRounded {
+    @IBInspectable var leadingImage: UIImage = .checkmark {
         didSet {
             leadingImageView.image = leadingImage
             leadingImageView.isHidden = false
