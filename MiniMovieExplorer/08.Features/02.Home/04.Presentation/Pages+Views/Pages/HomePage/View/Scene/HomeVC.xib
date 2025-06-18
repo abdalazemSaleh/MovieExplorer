@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -12,6 +13,7 @@
             <connections>
                 <outlet property="headerView" destination="l9T-ew-ih7" id="7zd-px-tCX"/>
                 <outlet property="popularMoviesCollectionView" destination="luP-to-kGv" id="STT-if-Pr6"/>
+                <outlet property="stateView" destination="vLt-eu-26y" id="RGR-nw-K1I"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,6 +22,13 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLt-eu-26y" customClass="StateView" customModule="MiniMovieExplorer" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="362" width="393" height="128"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" placeholder="YES" id="Pc4-oQ-WIK"/>
+                    </constraints>
+                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="luP-to-kGv">
                     <rect key="frame" x="0.0" y="0.0" width="393" height="784"/>
                     <color key="backgroundColor" name="appBackground"/>
@@ -41,12 +50,15 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="appBackground"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vLt-eu-26y" secondAttribute="trailing" id="912-yU-x5U"/>
                 <constraint firstItem="l9T-ew-ih7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="NZM-Tv-vAA"/>
                 <constraint firstItem="l9T-ew-ih7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="RGf-VH-6Hp"/>
+                <constraint firstItem="vLt-eu-26y" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="UVS-jl-Zwe"/>
                 <constraint firstItem="luP-to-kGv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="el4-Jc-HNk"/>
                 <constraint firstItem="luP-to-kGv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="goM-fW-Hiw"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="luP-to-kGv" secondAttribute="bottom" id="hgd-yQ-tlq"/>
                 <constraint firstItem="l9T-ew-ih7" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="qFQ-TG-6FI"/>
+                <constraint firstItem="vLt-eu-26y" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zJp-RI-ZHm"/>
                 <constraint firstItem="luP-to-kGv" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="zml-Og-ab3"/>
             </constraints>
             <point key="canvasLocation" x="-22.137404580152669" y="-11.267605633802818"/>
@@ -54,10 +66,13 @@
     </objects>
     <resources>
         <namedColor name="appBackground">
-            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="gray_1">
             <color red="0.59200000762939453" green="0.60000002384185791" blue="0.60799998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

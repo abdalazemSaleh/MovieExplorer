@@ -39,9 +39,9 @@ final class HomeViewModel: BaseViewModel {
         self.favoriteMovieRepository = favoriteMovieRepository
         self.coordinator = coordinator
         super.init()
-        Task {
-            await fetchPopularMovies()
-        }
+//        Task {
+//            await fetchPopularMovies()
+//        }
     }
 }
 

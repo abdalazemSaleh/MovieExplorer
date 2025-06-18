@@ -5,7 +5,8 @@ final class HomeVC: BaseVC {
     // MARK: - IBOutlet
     @IBOutlet weak var headerView: HomeHeaderView!
     @IBOutlet private weak var popularMoviesCollectionView: UICollectionView!
-    
+    @IBOutlet weak var stateView: StateView!
+
     // MARK: - Properties
     private var viewModel: HomeViewModel
     private var lastContentOffset: CGFloat = 0
