@@ -1,4 +1,14 @@
-struct MovieDetailsEntity: MovieSummaryProtocol {
+
+protocol ErrorRepresentable {
+    var success: Bool? { get }
+    var statusMessage: String? { get }
+}
+
+struct MovieDetailsEntity: MovieSummaryProtocol, ErrorRepresentable {
+    /// error
+    var success: Bool?
+    var statusMessage: String?
+    
     /// base movie data
     var id: Int?
     var adult: Bool?
@@ -26,6 +36,8 @@ struct MovieDetailsEntity: MovieSummaryProtocol {
     let homepage: String?
     
     enum CodingKeys: String, CodingKey {
+        case success
+        case statusMessage
         case id
         case adult
         case backdropPath = "backdrop_path"

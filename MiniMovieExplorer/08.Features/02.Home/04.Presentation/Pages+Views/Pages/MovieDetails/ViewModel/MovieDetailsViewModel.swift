@@ -18,8 +18,6 @@ final class MovieDetailsViewModel: BaseViewModel {
     // MARK: - Published Properties
     @Published private(set) var movieDetails: MovieDetails?
     @Published private(set) var filteredMovies: [MovieViewItem] = []
-    @Published private(set) var isLoading = false
-    @Published private(set) var error: Error?
     
     // MARK: - Init
     init(
@@ -44,7 +42,9 @@ extension MovieDetailsViewModel: MovieDetailsViewModelProtocol {
             let movie = try await fetchMovieDetailsUseCase.execute(request: movieID)
             movieDetails = movie
         } catch {
-            print("Error is", error.localizedDescription)
+            handelError(error) { errorMessage in
+                coordinator.showSnakeBar(message: errorMessage)
+            }
         }
     }
     

@@ -3,9 +3,9 @@ import Foundation
 enum MovieMapper {
     static func map( _ entity: PaginationBaseModel<MovieEntity>) -> MovieResponse {
         return MovieResponse(
-            currentPage: entity.page,
-            hasMorePages: entity.page < entity.totalPages,
-            movies: entity.results.map { Self.map($0) }
+            currentPage: entity.page ?? .defaultValue,
+            hasMorePages: entity.page ?? .defaultValue < entity.totalPages ?? .defaultValue,
+            movies: entity.results.map { Self.map($0) } ?? []
         )
     }
     

@@ -6,13 +6,13 @@ class MoviesRemoteDataSource: BaseRemoteDataSource, MoviesDataSource {
         let endPoint = MoviesEndPoint.fetchPopularMovies(page: page)
         let request = RequestModel(endPoint: endPoint)
         let response: PaginationBaseModel<MovieEntity> = try await network.requestWithBase(request)
-        return response
+        return try checkPaginatedResponse(response)
     }
     
     func fetchMovieDetails(for movieId: Int) async throws -> MovieDetailsEntity {
         let endPoint = MoviesEndPoint.fetchMovieDetails(id: movieId)
         let request = RequestModel(endPoint: endPoint)
         let response: MovieDetailsEntity = try await network.requestWithBase(request)
-        return response
+        return try checkModelErrorResponse(response)
     }
 }
